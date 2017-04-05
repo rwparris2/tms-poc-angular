@@ -1,0 +1,5 @@
+<label (click)="toggleEditMode()">{{label}} :</label>
+<span [hidden]="isEditing" (click)="toggleEditMode()">{{selectedItem?.name}}</span>
+<select [hidden]="!isEditing" [(ngModel)]="selectedItem" (blur)="toggleEditMode()" (change)="toggleEditMode()">
+  <option *ngFor="let item of items" [ngValue]="item">{{item.name}}</option>
+</select>

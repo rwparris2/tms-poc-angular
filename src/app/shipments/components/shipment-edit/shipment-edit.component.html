@@ -1,0 +1,75 @@
+<!--<app-tp-input label="input city" [(inputValue)]="city"></app-tp-input>-->
+
+<div class="row">
+  <div class="col-md-6">
+
+    <form novalidate [formGroup]="form" (ngSubmit)="save()">
+      <label>id</label>
+      <input type="text" formControlName="id" readonly="readonly" />
+
+      <div formGroupName="origin">
+        <label>city</label>
+        <input type="text" formControlName="city" />
+      </div>
+
+      <div formGroupName="origin">
+        <label>state</label>
+        <input type="text" formControlName="state" />
+      </div>
+
+      <div formGroupName="origin">
+        <label>zip</label>
+        <input type="text" formControlName="zip" />
+      </div>
+
+      <div>
+        <label>mode</label>
+        <select formControlName="mode">
+          <option *ngFor="let mode of modes|async" [ngValue]="mode" [selected]="form.value.mode.id===mode.id">
+            {{mode.name}}
+          </option>
+        </select>
+      </div>
+
+      <div>
+        <label>hot</label>
+        <input type="checkbox" formControlName="hot">
+      </div>
+
+      <div formArrayName="lineItems">
+        <div *ngFor="let item of form.controls.lineItems.controls; let i=index" style="border:1px">
+          <!-- line item header, show remove button when more than one address available -->
+          <div>
+            <span>Item {{i + 1}}</span>
+          </div>
+
+          <div>
+            <div [formGroupName]="i">
+              <div>
+                <label>item name</label>
+                <input type="text" formControlName="item">
+              </div>
+              <div>
+                <label>qty</label>
+                <input type="text" formControlName="qty">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button (click)="addLineItem()" type="button">
+          Add another line item +
+        </button>
+      </div>
+
+      <button class="submit" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+
+  </div>
+  <div class="col-md-6">
+    <pre>{{form.value|json:2}}</pre>
+  </div>
+</div>

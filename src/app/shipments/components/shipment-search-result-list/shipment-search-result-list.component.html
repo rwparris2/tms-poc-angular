@@ -1,0 +1,14 @@
+<table class="table table-hover table-sm table-bordered table-striped">
+  <thead>
+    <tr>
+      <th *ngFor="let columnName of resultColumns">{{columnName}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let shipment of shipments | async" (click)="onSelect(shipment)">
+      <td *ngFor="let columnName of resultColumns">
+        {{shipment[columnName]}}
+      </td>
+    </tr>
+    <tbody>
+</table>

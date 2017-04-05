@@ -1,0 +1,3 @@
+<label (click)="toggleEditMode()">{{label}} :</label>
+<span [hidden]="isEditing" (click)="toggleEditMode()">{{inputValue}}</span>
+<input [hidden]="!isEditing" (blur)="toggleEditMode()" [(ngModel)]="inputValue" />

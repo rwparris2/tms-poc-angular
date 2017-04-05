@@ -1,0 +1,12 @@
+table {
+  min-width: 100%;
+  white-space: nowrap;
+}
+
+tbody tr {
+  cursor: pointer;
+}
+
+tbody tr:hover {
+  background-color: #5cb85c;
+}
