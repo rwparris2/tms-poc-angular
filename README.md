@@ -1,5 +1,7 @@
 # ShipmentsTestAngular
 
+> A project for testing Angular as a potential framework to use for building TMSes.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
 ## Development server
